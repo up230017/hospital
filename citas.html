@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" ng-app="citasApp">
 
 <head>
     <meta charset="UTF-8" />
@@ -9,9 +9,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 </head>
 
-<body>
+<body ng-controller="CitasController">
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <nav class="navbar navbar-dark bg-success">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">Consulta Medica</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -33,17 +33,15 @@
         <h4>Agendar nueva cita</h4>
         <form ng-submit="agendarCita()" class="row g-3 mb-4">
             <div class="col-md-4">
-                <input type="text" class="form-control" placeholder="Nombre del médico" ng-model="nuevaCita.medico"
-                    required>
+                <input type="text" class="form-control" placeholder="Nombre del médico" ng-model="nuevaCita.medico" required />
             </div>
             <div class="col-md-4">
-                <input type="text" class="form-control" placeholder="Especialidad" ng-model="nuevaCita.especialidad"
-                    required>
+                <input type="text" class="form-control" placeholder="Especialidad" ng-model="nuevaCita.especialidad" required />
             </div>
             <div class="col-md-4">
-                <input type="data" class="form-control" ng-model="nuevaCita.fecha" required>
+                <input type="data" class="form-control" ng-model="nuevaCita.fecha" required />
             </div>
-            <div class="col-md-12">
+            <div class="col-12">
                 <button class="btn btn-success" type="submit">Agendar</button>
             </div>
         </form>
