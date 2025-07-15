@@ -7,8 +7,8 @@ import Signin from './pages/Signin'
 import Nosotros from './pages/Nosotros'
 import Contacto from './pages/Contacto'
 import MiPerfil from './pages/MiPerfil'
-import MisCitas from './pages/MisCitas'
-import Cita from './pages/Cita'
+import MisConsultas from './pages/MisConsultas'
+import Consulta from './pages/Consulta'
 import Navbar from './components/Navbar'
 
 const App = () => {
@@ -24,8 +24,8 @@ const App = () => {
         <Route path='/nosotros' element={<Nosotros />} />
         <Route path='/contacto' element={<Contacto />} />
         <Route path='/mi-perfil' element={<MiPerfil />} />
-        <Route path='/mis-citas' element={<MisCitas />} />
-        <Route path='/cita/:docId' element={<Cita />} />
+        <Route path='/mis-consultas' element={<MisConsultas />} />
+        <Route path='/consulta/:docId' element={<Consulta />} />
       </Routes>
     </div>
   )
