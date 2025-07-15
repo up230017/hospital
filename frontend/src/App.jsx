@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router-dom'
 import Inicio from './pages/Inicio'
 import Medicos from './pages/Medicos'
 import Login from './pages/Login'
-import Signin from './pages/Signin'
 import Nosotros from './pages/Nosotros'
 import Contacto from './pages/Contacto'
 import MiPerfil from './pages/MiPerfil'
@@ -21,7 +20,6 @@ const App = () => {
         <Route path='/medicos' element={<Medicos />} />
         <Route path='/medicos/:speciality' element={<Medicos />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/signin' element={<Signin />} />
         <Route path='/nosotros' element={<Nosotros />} />
         <Route path='/contacto' element={<Contacto />} />
         <Route path='/my-profile' element={<MiPerfil />} />
