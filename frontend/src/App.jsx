@@ -10,6 +10,7 @@ import MiPerfil from './pages/MiPerfil'
 import MisConsultas from './pages/MisConsultas'
 import Consulta from './pages/Consulta'
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
         <Route path='/mis-consultas' element={<MisConsultas />} />
         <Route path='/consulta/:docId' element={<Consulta />} />
       </Routes>
+      <Footer/>
     </div>
   )
 }
