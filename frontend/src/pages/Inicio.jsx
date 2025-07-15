@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Citas = () => {
+const Inicio = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const Citas = () => {
   )
 }
 
-export default Citas
+export default Inicio

@@ -1,13 +1,14 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import Home from './pages/Home'
+import Inicio from './pages/Inicio'
 import Medicos from './pages/Medicos'
 import Login from './pages/Login'
 import Signin from './pages/Signin'
 import Nosotros from './pages/Nosotros'
 import Contacto from './pages/Contacto'
 import MiPerfil from './pages/MiPerfil'
-import Citas from './pages/Citas'
+import MisCitas from './pages/MisCitas'
+import Cita from './pages/Cita'
 import Navbar from './components/Navbar'
 
 const App = () => {
@@ -15,14 +16,16 @@ const App = () => {
     <div className='mx-4 sm:mx-[10%]'>
       <Navbar/>
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<Inicio />} />
         <Route path='/medicos' element={<Medicos />} />
+        <Route path='/medicos/:especialidad' element={<Medicos />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signin' element={<Signin />} />
         <Route path='/nosotros' element={<Nosotros />} />
-        <Route path='/contact' element={<Contacto />} />
+        <Route path='/contacto' element={<Contacto />} />
         <Route path='/mi-perfil' element={<MiPerfil />} />
-        <Route path='/citas' element={<Citas />} />
+        <Route path='/mis-citas' element={<MisCitas />} />
+        <Route path='/cita/:docId' element={<Cita />} />
       </Routes>
     </div>
   )

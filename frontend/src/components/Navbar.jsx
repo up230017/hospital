@@ -21,7 +21,7 @@ const Navbar = () => {
           <li className='py-1'>Médicos</li>
           <hr className='border-none outline-none h-0.5 bg-jungle-green w-3/5 m-auto hidden' />
         </NavLink>
-        <NavLink to={'/about'}>
+        <NavLink to={'/nosotros'}>
           <li className='py-1'>Nosotros</li>
           <hr className='border-none outline-none h-0.5 bg-jungle-green w-3/5 m-auto hidden' />
         </NavLink>
@@ -39,7 +39,7 @@ const Navbar = () => {
             <div className='absolute top-0 right-0 pt-14 text-base font-medium text-gray-600 z-20 hidden group-hover:block'>
               <div className='min-w-48 bg-stone-100 rounded flex flex-col gap-4 p-4'>
                 <p onClick={()=>navigate('/mi-perfil')} className='hover:text-black cursor-pointer'>Mi Perfil</p>
-                <p onClick={()=>navigate('/citas')} className='hover:text-black cursor-pointer'>Mis Citas</p>
+                <p onClick={()=>navigate('/mis-citas')} className='hover:text-black cursor-pointer'>Mis Citas</p>
                 <p onClick={()=>setToken(false)} className='hover:text-black cursor-pointer'>Cerrar Sesión</p>
               </div>
             </div>
