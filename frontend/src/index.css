@@ -1,0 +1,25 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@theme {
+    --color-aero: hsla(192, 64%, 55%, 1);
+    --color-jungle-green: hsla(165, 55%, 45%, 1);
+    --color-mint-green: hsla(166, 50%, 87%, 1);
+    --color-black: hsla(120, 100%, 0%, 1);
+    --color-emerald: hsla(133, 48%, 56%, 1)
+
+    
+}
+
+.active hr{
+        @apply block
+}
+
+::-webkit-scrollbar {
+    @apply hidden
+}
+
+
