@@ -80,8 +80,8 @@ const MiPerfil = () => {
         <div className='mt-10'>
           {
             isEdit
-            ? <button className='border border-jungle-green px-8 py-2 rounded-full hover:bg-jungle-green hover:text-white transition-all' onClick={()=>setIsEdit(false)}>Guardar Información</button>
-            : <button className='border border-jungle-green px-8 py-2 rounded-full hover:bg-jungle-green hover:text-white transition-all' onClick={()=>setIsEdit(true)}>Editar Información</button>
+            ? <button className='border border-teal-500 px-8 py-2 rounded-full hover:bg-teal-500 hover:text-white transition-all' onClick={()=>setIsEdit(false)}>Guardar Información</button>
+            : <button className='border border-teal-500 px-8 py-2 rounded-full hover:bg-teal-500 hover:text-white transition-all' onClick={()=>setIsEdit(true)}>Editar Información</button>
           }
         </div>
 

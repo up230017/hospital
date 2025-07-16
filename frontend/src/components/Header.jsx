@@ -3,7 +3,7 @@ import { assets } from '../assets/assets'
 
 const Header = () => {
   return (
-    <div className='flex flex-col md:flex-row flex-wrap bg-jungle-green rounded-lg px-6 md:px-10 lg:px-20'>
+    <div className='flex flex-col md:flex-row flex-wrap bg-teal-500 rounded-lg px-6 md:px-10 lg:px-20'>
 
 
         {/* Left Side */}

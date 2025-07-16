@@ -15,19 +15,19 @@ const Navbar = () => {
       <ul className='hidden md:flex items-start gap-5 font-medium'>
         <NavLink to={'/'}>
           <li className='py-1'>Inicio</li>
-          <hr className='border-none outline-none h-0.5 bg-jungle-green w-3/5 m-auto hidden' />
+          <hr className='border-none outline-none h-0.5 bg-teal-500 w-3/5 m-auto hidden' />
         </NavLink>
         <NavLink to={'/medicos'}>
           <li className='py-1'>Médicos</li>
-          <hr className='border-none outline-none h-0.5 bg-jungle-green w-3/5 m-auto hidden' />
+          <hr className='border-none outline-none h-0.5 bg-teal-500 w-3/5 m-auto hidden' />
         </NavLink>
         <NavLink to={'/nosotros'}>
           <li className='py-1'>Nosotros</li>
-          <hr className='border-none outline-none h-0.5 bg-jungle-green w-3/5 m-auto hidden' />
+          <hr className='border-none outline-none h-0.5 bg-teal-500 w-3/5 m-auto hidden' />
         </NavLink>
         <NavLink to={'/contacto'}>
           <li className='py-1'>Contacto</li>
-          <hr className='border-none outline-none h-0.5 bg-jungle-green w-3/5 m-auto hidden' />
+          <hr className='border-none outline-none h-0.5 bg-teal-500 w-3/5 m-auto hidden' />
         </NavLink>
       </ul>
       <div className='flex item-canter gap-4'>
@@ -44,7 +44,7 @@ const Navbar = () => {
               </div>
             </div>
           </div>
-          :<button onClick={()=>navigate('/login')} className='bg-jungle-green text-white px-8 py-3 rounded-full font-light hidden md:block cursor-pointer'>Acceder</button>
+          :<button onClick={()=>navigate('/login')} className='bg-teal-500 text-white px-8 py-3 rounded-full font-light hidden md:block cursor-pointer'>Acceder</button>
         }
       </div>
     </div>
