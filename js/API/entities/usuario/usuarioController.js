@@ -1,4 +1,4 @@
-const Usuario = require('./T_UsuarioModel')
+const Usuario = require('./usuarioModel')
 
 /**
  * @swagger
