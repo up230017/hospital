@@ -27,8 +27,7 @@ router.post('/usuario', [
 
   // Nombre: obligatorio, máximo 30 caracteres
   body('nombre')
-    .exists({ checkFalsy: true }).withMessage('El nombre es obligatorio')
-    .isLength({ max: 30 }).withMessage('El nombre no debe exceder los 30 caracteres'),
+    .exists({ checkFalsy: true }).withMessage('El nombre es obligatorio'),
 
   // Email: obligatorio, válido
   body('email')
@@ -52,8 +51,7 @@ router.post('/usuario', [
 
   // Fecha de nacimiento: opcional, debe ser fecha ISO válida
   body('fecha_nacimiento')
-    .optional()
-    .isISO8601().withMessage('La fecha de nacimiento debe ser una fecha válida (YYYY-MM-DD)')
+    .optional(),
 
 ],validate, usuarioController.postUsuario)
 
@@ -68,8 +66,7 @@ router.put('/usuario/:id', [
 
   // Nombre: obligatorio, máximo 30 caracteres
   body('nombre')
-    .exists({ checkFalsy: true }).withMessage('El nombre es obligatorio')
-    .isLength({ max: 30 }).withMessage('El nombre no debe exceder los 30 caracteres'),
+    .exists({ checkFalsy: true }).withMessage('El nombre es obligatorio'),
 
   // Email: obligatorio, válido
   body('email')
@@ -93,8 +90,7 @@ router.put('/usuario/:id', [
 
   // Fecha de nacimiento: opcional, debe ser fecha ISO válida
   body('fecha_nacimiento')
-    .optional()
-    .isISO8601().withMessage('La fecha de nacimiento debe ser una fecha válida (YYYY-MM-DD)')
+    .optional(),
 
 ],validate, usuarioController.putUsuario)
 
