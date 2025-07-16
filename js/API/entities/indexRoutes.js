@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const usuraioRoutes = require('./usuario/T_UsuarioRoutes');
+const usuraioRoutes = require('./usuario/usuarioRoutes');
 
 router.use(usuraioRoutes);
 
