@@ -38,7 +38,7 @@ const Schema = mongoose.Schema;
  *       example:
  *         nombre: String
  *         password: String
- *         email: String
+ *         email: String@String.com
  *         direccion: String
  *         Género: Masculino
  *         telefono: "1234567890"
