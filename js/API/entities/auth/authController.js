@@ -1,14 +1,14 @@
 /* eslint-disable consistent-return */
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const User = require('../T_Usuario/usuarioModel.js');
+const Usuario = require('../usuario/usuarioModel.js');
 const RefreshToken = require('../auth/refreshTokenModel.js');
 
 // Function to generate JWT token
-const generateToken = (userId, name, role) => jwt.sign({ userId, name, role }, process.env.JWT_SECRET, { expiresIn: '1h' });
+const generateToken = (userId, nombre) => jwt.sign({ userId, nombre}, process.env.JWT_SECRET, { expiresIn: '1h' });
 
 // Function to check if user exists
-const checkUserExists = async (email) => User.findOne({ email });
+const checkUserExists = async (email) => Usuario.findOne({ email });
 
 // Function to hash password
 const hashPassword = async (password) => bcrypt.hash(password, 10);
@@ -32,23 +32,16 @@ const generateRefreshToken = (userId) => {
  *           schema:
  *             type: object
  *             required:
- *               - userName
- *               - userDisplayName
+ *               - nombre
  *               - email
  *               - password
- *               - role
  *             properties:
- *               userName:
- *                 type: string
- *               userDisplayName:
+ *               nombre:
  *                 type: string
  *               email:
  *                 type: string
  *               password:
  *                 type: string
- *               role:
- *                 type: string
- *                 enum: ['Admin', 'Sales', 'Support', 'Manager', 'User']
  *     responses:
  *       201:
  *         description: User registered successfully
@@ -60,7 +53,7 @@ const generateRefreshToken = (userId) => {
 exports.register = async (req, res, next) => {
   try {
     const {
-      userName, userDisplayName = userName, email, password, role = 'User',
+      nombre = nombre, email, password,
     } = req.body;
 
     const existingUser = await checkUserExists(email);
@@ -70,15 +63,13 @@ exports.register = async (req, res, next) => {
 
     const hashedPassword = await hashPassword(password);
 
-    const newUser = new User({
-      userName,
-      userDisplayName,
-      email,
+    const newUsuario = new Usuario({
+      nombre,
       password: hashedPassword,
-      role,
+      email,
     });
 
-    await newUser.save();
+    await newUsuario.save();
 
     res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
@@ -136,7 +127,7 @@ exports.login = async (req, res, next) => {
     }
 
     // eslint-disable-next-line no-underscore-dangle
-    const token = generateToken(user._id, user.role, user.userDisplayName);
+    const token = generateToken(user._id, user.nombre);
     // eslint-disable-next-line no-underscore-dangle
     const refreshToken = await generateRefreshToken(user._id);
 
@@ -182,7 +173,7 @@ exports.refreshToken = async (req, res, next) => {
   try {
     const { token } = req.body;
     const decoded = jwt.verify(token, process.env.JWT_REFRESH_SECRET);
-    const user = await User.findById(decoded.userId);
+    const user = await Usuario.findById(decoded.userId);
     if (user) {
       const newToken = generateToken(user.userId, user.name, user.role);
       res.status(200).json({ token: newToken });

@@ -1,7 +1,7 @@
 const express = require('express');
-//const cors = require('cors');
+const cors = require('cors');
 const connectDB = require('./API/config/database')
-//const initializeData = require('./src/config/initializeData');
+const initializeData = require('./API/config/initializeData');
 const routes = require('./API/entities/indexRoutes');
 const swaggerMiddleware = require('./API/middlewares/swagger');
 const errorHandler = require('./API/middlewares/errorHandler');
@@ -12,7 +12,9 @@ const port = process.env.PORT || 3005;
 async function main(){
     try{
         await connectDB();
-        //await initializeData();
+
+        app.use(cors({ origin: 'http://localhost:5173' }));
+        await initializeData();
 
         swaggerMiddleware(app);
         app.use(errorHandler);
