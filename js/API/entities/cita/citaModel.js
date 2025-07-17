@@ -9,11 +9,15 @@ const Schema = mongoose.Schema;
  *     Cita:
  *       type: object
  *       required:
+ *         - email_usuario
  *         - nombre_medico
  *         - especialidad
  *         - fecha_hora
  *         - direccion
  *       properties:
+ *         email_usuario:
+ *           type: string
+ *           description: email del usuario
  *         nombre_medico:
  *           type: string
  *           description: nombre del medico
@@ -35,6 +39,11 @@ const Schema = mongoose.Schema;
  */
 
 const citaSchema = Schema({
+
+  email_usuario: {
+    type: String,
+    required: true
+  },
 
   nombre_medico: {
     type: String,
