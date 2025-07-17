@@ -12,7 +12,7 @@ const AppContextProvider = (props) => {
     const currencySymbol = '$'
 
     // const [doctors, setDoctors] = useState([])
-    const [userData, setUserData] = useState(false)
+    const [userData, setUserData] = useState([])
     const [citas, setCitasData] = useState([])
 
     // Getting User Profile using API
@@ -21,12 +21,7 @@ const AppContextProvider = (props) => {
         try {
 
             const data  = await  getUsuarioById(id)
-
-            if (data.success) {
-                setUserData(data)
-            } else {
-                toast.error(data.message)
-            }
+            setUserData(data)
 
         } catch (error) {
             console.log(error)
