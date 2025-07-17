@@ -7,7 +7,7 @@ import RelatedDoctors from '../components/RelatedDoctors'
 const Consulta = () => {
 
   const {docId} = useParams()
-  const { doctors, currencySymbol, backendUrl, token, getDoctosData } = useContext(AppContext)
+  const { doctors, currencySymbol } = useContext(AppContext)
   const daysOfWeek = ['DOM', 'LUN', 'MAR', 'MIE', 'JUE', 'VIE', 'SAB']
 
   const [docInfo, setDocInfo] = useState(null)

@@ -25,14 +25,9 @@ const MiPerfil = () => {
       formData.append('gender', userData.Género)
       formData.append('dob', userData.fecha_nacimiento)
 
-      if (data.success) {
-        toast.success(data.message)
-        await loadUserProfileData(userData._id)
+        await loadUserProfileData(email)
         setIsEdit(false)
         setImage(false)
-      } else {
-        toast.error(data.message)
-      }
 
     } catch (error) {
       console.log(error)
@@ -41,7 +36,7 @@ const MiPerfil = () => {
 
   }
 
-  return userData ? (
+  return  (
     <div className='max-w-lg flex flex-col gap-2 text-sm pt-5'>
 
       {isEdit
@@ -56,8 +51,8 @@ const MiPerfil = () => {
       }
 
       {isEdit
-        ? <input className='bg-gray-50 text-3xl font-medium max-w-60' type="text" onChange={(e) => setUserData(prev => ({ ...prev, name: e.target.value }))} value={userData.name} />
-        : <p className='font-medium text-3xl text-[#262626] mt-4'>{userData.name}</p>
+        ? <input className='bg-gray-50 text-3xl font-medium max-w-60' type="text" onChange={(e) => setUserData(prev => ({ ...prev, nombre: e.target.value }))} value={userData.nombre} />
+        : <p className='font-medium text-3xl text-[#262626] mt-4'>{userData.nombre}</p>
       }
 
       <hr className='bg-[#ADADAD] h-[1px] border-none' />
@@ -70,18 +65,17 @@ const MiPerfil = () => {
           <p className='font-medium'>Teléfono:</p>
 
           {isEdit
-            ? <input className='bg-gray-50 max-w-52' type="text" onChange={(e) => setUserData(prev => ({ ...prev, phone: e.target.value }))} value={userData.phone} />
-            : <p className='text-teal-500'>{userData.phone}</p>
+            ? <input className='bg-gray-50 max-w-52' type="text" onChange={(e) => setUserData(prev => ({ ...prev, telefono: e.target.value }))} value={userData.telefono} />
+            : <p className='text-teal-500'>{userData.telefono}</p>
           }
 
           <p className='font-medium'>Dirección:</p>
 
           {isEdit
             ? <p>
-              <input className='bg-gray-50' type="text" onChange={(e) => setUserData(prev => ({ ...prev, address: { ...prev.address, line1: e.target.value } }))} value={userData.address.line1} />
-              <br />
-              <input className='bg-gray-50' type="text" onChange={(e) => setUserData(prev => ({ ...prev, address: { ...prev.address, line2: e.target.value } }))} value={userData.address.line2} /></p>
-            : <p className='text-gray-500'>{userData.address.line1} <br /> {userData.address.line2}</p>
+              <input className='bg-gray-50' type="text" onChange={(e) => setUserData(prev => ({ ...prev, address: e.target.value }))} value={userData.address} />
+              </p>
+            : <p className='text-gray-500'>{userData.address}</p>
           }
 
         </div>
@@ -92,19 +86,19 @@ const MiPerfil = () => {
           <p className='font-medium'>Género:</p>
 
           {isEdit
-            ? <select className='max-w-20 bg-gray-50' onChange={(e) => setUserData(prev => ({ ...prev, gender: e.target.value }))} value={userData.gender} >
+            ? <select className='max-w-20 bg-gray-50' onChange={(e) => setUserData(prev => ({ ...prev, Género: e.target.value }))} value={userData.Género} >
               <option value="Not Selected">No Selecionado</option>
               <option value="Hombre">Hombre</option>
               <option value="Mujer">Mujer</option>
             </select>
-            : <p className='text-gray-500'>{userData.gender}</p>
+            : <p className='text-gray-500'>{userData.Género}</p>
           }
 
           <p className='font-medium'>Día de Nacimiento:</p>
 
           {isEdit
-            ? <input className='max-w-28 bg-gray-50' type='date' onChange={(e) => setUserData(prev => ({ ...prev, dob: e.target.value }))} value={userData.dob} />
-            : <p className='text-gray-500'>{userData.dob}</p>
+            ? <input className='max-w-28 bg-gray-50' type='date' onChange={(e) => setUserData(prev => ({ ...prev, fecha_nacimiento: e.target.value }))} value={userData.fecha_nacimiento} />
+            : <p className='text-gray-500'>{userData.fecha_nacimiento}</p>
           }
 
         </div>
@@ -118,7 +112,7 @@ const MiPerfil = () => {
 
       </div>
     </div>
-  ) : null
+  )
 }
 
 export default MiPerfil

@@ -67,6 +67,10 @@ exports.register = async (req, res, next) => {
       nombre,
       password: hashedPassword,
       email,
+      direccion: "String",
+      Género: "Masculino",
+      telefono: "1234567890",
+      fecha_nacimiento: "String"
     });
 
     await newUsuario.save();
