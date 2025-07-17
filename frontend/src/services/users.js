@@ -1,44 +1,44 @@
 import api from '../config/services';
 
-export const getUsers = async (page = 1, limit = 10) => {
+export const getUsuarios = async (page = 1, limit = 10) => {
   try {
-    const response = await api.get('/users', { params: { page, limit } });
+    const response = await api.get('/usuarios', { params: { page, limit } });
     return response.data;
   } catch (error) {
     throw error;
   }
 };
 
-export const getUserById = async (userId) => {
+export const getUsuarioById = async (usuarioId) => {
   try {
-    const response = await api.get(`/users/${userId}`);
+    const response = await api.get(`/usuarios/${usuarioId}`);
     return response.data;
   } catch (error) {
     throw error;
   }
 };
 
-export const createUser = async (userData) => {
+export const createUsuario = async (usuarioData) => {
   try {
-    const response = await api.post('/users', userData);
+    const response = await api.post('/usuarios', usuarioData);
     return response.data;
   } catch (error) {
     throw error;
   }
 };
 
-export const updateUser = async (userId, userData) => {
+export const updateUsuario = async (usuarioId, usuarioData) => {
   try {
-    const response = await api.put(`/users/${userId}`, userData);
+    const response = await api.put(`/usuarios/${usuarioId}`, usuarioData);
     return response.data;
   } catch (error) {
     throw error;
   }
 };
 
-export const deleteUser = async (userId) => {
+export const deleteUsuario = async (usuarioId) => {
   try {
-    await api.delete(`/users/${userId}`);
+    await api.delete(`/usuarios/${usuarioId}`);
   } catch (error) {
     throw error;
   }
