@@ -27,5 +27,3 @@ export const refreshToken = async (token) => {
     throw error;
   }
 };
-
-refreshToken

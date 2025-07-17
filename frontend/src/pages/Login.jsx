@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import {login, register} from '../services/auth'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
 
@@ -7,9 +9,32 @@ const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [name, setName] = useState('')
+  const navigate = useNavigate()
+
+  const handleSubmit = async () => {
+    if (state == 'Login'){
+      try {
+        console.log(email, password);
+        const data = await login(email, password);
+        console.log('Usuario autenticado:', data);
+        // navigate('/my-profile')
+        // Aquí podrías guardar token, redirigir, etc.
+      } catch (error) {
+        console.error('Error al iniciar sesión:', error);
+      }
+    } else {
+      try {
+        const data = await register(name, email, password);
+        console.log('Usuario Registrado:', data);
+      } catch (error) {
+        console.error('Error al Registrar:', error);
+      }
+    }
+  };
 
   const onSubmitHandler = async (event) => {
     event.preventDefault()
+    handleSubmit()
   }
 
   return (
@@ -21,22 +46,22 @@ const Login = () => {
           state === "Sign Up" &&
           <div className='w-full'>
             <p>Nombre Completo</p>
-            <input className='border border-zinc-300 rounded w-full p-2 mt-1' type="text" onChange={(e) => setName(e.target.name)} value={name} required />
+            <input className='border border-zinc-300 rounded w-full p-2 mt-1' type="text" onChange={(e) => setName(e.target.value)} value={name} required />
           </div>
         }
         <div className='w-full'>
           <p>Email</p>
-          <input className='border border-zinc-300 rounded w-full p-2 mt-1' type="email" onChange={(e) => setEmail(e.target.email)} value={email} required />
+          <input className='border border-zinc-300 rounded w-full p-2 mt-1' type="email" onChange={(e) => setEmail(e.target.value)} value={email} required />
         </div>
         <div className='w-full'>
           <p>Contraseña</p>
-          <input className='border border-zinc-300 rounded w-full p-2 mt-1' type="password" onChange={(e) => setPassword(e.target.password)} value={password} required />
+          <input className='border border-zinc-300 rounded w-full p-2 mt-1' type="password" onChange={(e) => setPassword(e.target.value)} value={password} required />
         </div>
-        <button className='bg-teal-500 text-white w-full py-2 rounded-md text-base'>{state === 'Sign Up' ? "Crear Cuenta" : "Iniciar Sesión"}</button>
+        <button onClick={(e) => {onSubmitHandler(e)}} className='bg-teal-500 text-white w-full py-2 rounded-md text-base'>{state === 'Sign Up' ? "Crear Cuenta" : "Iniciar Sesión"}</button>
         {
           state === "Sign Up"
-            ? <p>¿Ya tienes una cuenta? <span onClick={() => setState('Login')} className='text-jungle-green underline cursor-pointer'>Inicie sesión aquí</span></p>
-            : <p>¿Crear una nueva cuenta? <span onClick={() => setState('Sign Up')} className='text-jungle-green underline cursor-pointer'>Registrese Aquí</span></p>
+            ? <p>¿Ya tienes una cuenta? <span onClick={(e) => {setState('Login'); }} className='text-jungle-green underline cursor-pointer'>Inicie sesión aquí</span></p>
+            : <p>¿Crear una nueva cuenta? <span onClick={(e) => {setState('Sign Up');}} className='text-jungle-green underline cursor-pointer'>Registrese Aquí</span></p>
         }
       </div>
     </form>
