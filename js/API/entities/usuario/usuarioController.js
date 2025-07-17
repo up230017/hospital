@@ -27,13 +27,13 @@ exports.getUsuarios = async (req, res, next) => {
 
 /**
  * @swagger
- * /usuario/{id}:
+ * /usuario/{email}:
  *   get:
  *     summary: Obtiene Usuario por ID
  *     tags: [Usuario]
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: email
  *         schema:
  *           type: string
  *         required: true
@@ -50,7 +50,7 @@ exports.getUsuarios = async (req, res, next) => {
  */
 exports.getUsuarioPorID = async (req, res, next) => {
   try {
-    const usuario = await Usuario.findById(req.params.id);
+    const usuario = await Usuario.findOne({ email: req.params.email });
     if (!usuario) {
       res.status(404).json({ message: 'Usuario no encontrado' });
     } else {

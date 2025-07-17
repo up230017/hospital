@@ -13,8 +13,8 @@ router.get('/usuario', [
 ], validate, usuarioController.getUsuarios);
 
 //este es la ruta para obeter un Usuario
-router.get('/usuario/:id', [
-  param('id').isMongoId().withMessage('Invalid Usuario ID'),
+router.get('/usuario/:email', [
+  param('email').isEmail().withMessage('Invalid Usuario ID'),
 ], validate, usuarioController.getUsuarioPorID);
 
 

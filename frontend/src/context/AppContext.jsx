@@ -2,46 +2,28 @@ import { createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import axios from 'axios'
 import { doctors } from "../assets/assets";
+import { getCitas, getCitaById, createCita, deleteCita} from "../services/cita"
+import { getUsuarios, getUsuarioById, createUsuario, updateUsuario, deleteUsuario} from "../services/users"
 
 export const AppContext = createContext()
 
 const AppContextProvider = (props) => {
 
     const currencySymbol = '$'
-    const backendUrl = import.meta.env.VITE_BACKEND_URL
 
     // const [doctors, setDoctors] = useState([])
-    const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : '')
     const [userData, setUserData] = useState(false)
-
-    // Getting Doctors using API
-    const getDoctosData = async () => {
-
-        try {
-
-            const { data } = await axios.get(backendUrl + '/api/doctor/list')
-            if (data.success) {
-                setDoctors(data.doctors)
-            } else {
-                toast.error(data.message)
-            }
-
-        } catch (error) {
-            console.log(error)
-            toast.error(error.message)
-        }
-
-    }
+    const [citas, setCitasData] = useState([])
 
     // Getting User Profile using API
-    const loadUserProfileData = async () => {
+    const loadUserProfileData = async (id) => {
 
         try {
 
-            const { data } = await axios.get(backendUrl + '/api/user/get-profile', { headers: { token } })
+            const data  = await  getUsuarioById(id)
 
             if (data.success) {
-                setUserData(data.userData)
+                setUserData(data)
             } else {
                 toast.error(data.message)
             }
@@ -53,22 +35,27 @@ const AppContextProvider = (props) => {
 
     }
 
-    useEffect(() => {
-        getDoctosData()
-    }, [])
+    const loadCitas =  async () => {
+        try {
+            const data = await getCitas()
+
+            setCitasData(data)
+
+        } catch (error){
+            console.log(error)
+            toast.error(error.message)
+        }
+    }
 
     useEffect(() => {
-        if (token) {
-            loadUserProfileData()
-        }
-    }, [token])
+
+    })
 
     const value = {
-        doctors, getDoctosData,
+        doctors,
         currencySymbol,
-        backendUrl,
-        token, setToken,
-        userData, setUserData, loadUserProfileData
+        userData, setUserData, loadUserProfileData,
+        citas, setCitasData
     }
 
     return (

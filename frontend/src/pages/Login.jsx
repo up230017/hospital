@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {login, register} from '../services/auth'
 import { useNavigate } from 'react-router-dom'
+// import { AppContext } from '../context/AppContext'
 
 const Login = () => {
 
@@ -9,6 +10,7 @@ const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [name, setName] = useState('')
+  // const { loadUserProfileData } = useContext(AppContext)
   const navigate = useNavigate()
 
   const handleSubmit = async () => {
@@ -17,6 +19,7 @@ const Login = () => {
         console.log(email, password);
         const data = await login(email, password);
         console.log('Usuario autenticado:', data);
+        // loadUserProfileData(email);
         // navigate('/my-profile')
         // Aquí podrías guardar token, redirigir, etc.
       } catch (error) {

@@ -10,7 +10,7 @@ const MiPerfil = () => {
 
   const [image, setImage] = useState(false)
 
-  const { token, backendUrl, userData, setUserData, loadUserProfileData } = useContext(AppContext)
+  const { userData, setUserData, loadUserProfileData } = useContext(AppContext)
 
   // Function to update user profile data using API
   const updateUserProfileData = async () => {
@@ -19,19 +19,15 @@ const MiPerfil = () => {
 
       const formData = new FormData();
 
-      formData.append('name', userData.name)
-      formData.append('phone', userData.phone)
-      formData.append('address', JSON.stringify(userData.address))
-      formData.append('gender', userData.gender)
-      formData.append('dob', userData.dob)
-
-      image && formData.append('image', image)
-
-      const { data } = await axios.post(backendUrl + '/api/user/update-profile', formData, { headers: { token } })
+      formData.append('name', userData.nombre)
+      formData.append('phone', userData.telefono)
+      formData.append('address', userData.address)
+      formData.append('gender', userData.Género)
+      formData.append('dob', userData.fecha_nacimiento)
 
       if (data.success) {
         toast.success(data.message)
-        await loadUserProfileData()
+        await loadUserProfileData(userData._id)
         setIsEdit(false)
         setImage(false)
       } else {
